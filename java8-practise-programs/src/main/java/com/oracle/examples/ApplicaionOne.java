@@ -127,6 +127,7 @@ public class ApplicaionOne {
         Collections.sort(arrList2, (a, b) -> a.getEmployeeName().compareTo(b.getEmployeeName()));
         arrList2.stream().forEach(i -> System.out.println(i));
         
+// Calling Static functions defined in interfaces.        
         System.out.println(InterfaceThree.func3());
     }        
 }
