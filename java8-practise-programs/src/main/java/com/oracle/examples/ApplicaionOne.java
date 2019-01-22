@@ -11,6 +11,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 /**
@@ -24,6 +26,7 @@ public class ApplicaionOne {
 // Predicate, Function, Consumer, Supplier
 // BiPredicate, BiFunction, Biconsumer, BiSupplier, ...
 // IntPredicate, IntFunction, ...
+// Supplier
 
         Function<Integer, Integer> f = i->i*i;
         System.out.println("Square Root of 100 is: " + f.apply(100));
@@ -129,6 +132,55 @@ public class ApplicaionOne {
         
 // Calling Static functions defined in interfaces.        
         System.out.println(InterfaceThree.func3());
+        
+// Using Predicate to validate.
+        String[] names = {"Joydeep", "Sandeep", "Randeep", "Shubhadeep", "Praadeep"};
+        Predicate<String> pred1 = name -> name.length() % 2 == 0;
+        for(String s1 : names) {
+            if(pred1.test(s1)) {
+                System.out.println("Names with even no. of characters: " + s1);
+            }
+        }
+        
+// Predicate Joining using and(), or() and negate().   
+        Integer[] numbers = {1561, 5615, 789, 465161, 64865, 64316, 7893};
+        Predicate<Integer> pred2 = num -> num % 2 == 0;
+        Predicate<Integer> pred3 = num -> num > 9999;
+        
+        for(Integer number : numbers) {
+            if(pred2.and(pred3).test(number)) {
+                System.out.println("Even no's and greater than 9999: " + number);
+            }
+            
+            if(pred2.or(pred3).test(number)) {
+                System.out.println("Even no's OR greater than 9999: " + number);
+            }
+            
+            if(pred2.negate().test(number)) {
+                System.out.println("Odd no's: " + number);
+            }
+        }
+
+// Function Chaining        
+        Function<Integer, Integer> func1 = i -> 2 * i;
+        Function<Integer, Integer> func2 = i -> i *i * i;
+        
+        System.out.println("Function Chaining: " + func1.andThen(func2).apply(10));
+        System.out.println("Function Chaining: " + func1.compose(func2).apply(10));
+        
+// Consumer
+        String[] members = {"Joydeep", "Sandeep", "Randeep", "Shubhadeep", "Praadeep"};
+        System.out.println("Printing using Consumer.!!!!!!");
+        Consumer<String> con1 = (s1) -> System.out.println(s1);
+        for(String member : members) {
+            con1.accept(member);
+        }
+
+// Supplier
+        Supplier<Double> suppl1 = () -> {
+            return Math.random() * 10;
+        };
+        System.out.println("Random Number: " + suppl1.get());
     }        
 }
 
