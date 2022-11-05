@@ -200,3 +200,7 @@ interface InterfaceThree {
         return "Static method in interface";
     }
 }
+@FunctionalInterface
+interface InterfaceFour {
+    void func4();
+}    
