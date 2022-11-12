@@ -204,3 +204,8 @@ interface InterfaceThree {
 interface InterfaceFour {
     void func4();
 }    
+
+@FunctionalInterface
+interface InterfaceFive {
+    void func5();
+}
